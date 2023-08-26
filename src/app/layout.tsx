@@ -52,10 +52,6 @@ const RootLayout = (props: {
     const isAuth = true;
     return (
         <html lang="en">
-            <meta
-                httpEquiv="Permissions-Policy"
-                content="interest-cohort=(), user-id=()"
-            />
             <ReduxProvider>
                 <body
                     className={`${montserrat.className} w-full h-screen flex items-start`}
