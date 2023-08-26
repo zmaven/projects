@@ -107,7 +107,7 @@ const ProjectList = () => {
     }
 
     return (
-        <div className="overflow-hidden w-full h-full flex flex-col gap-[12px] px-[26px] pb-[26px]">
+        <div className="flex flex-col gap-[12px] px-[26px] pb-[26px]">
             <section
                 className="
                     w-full bg-secondary py-[8px] font-medium px-[16px] text-[14px] grid grid-cols-7

@@ -53,9 +53,8 @@ const Footer = () => {
         }
     };
 
-    if (isProjectPage) return null;
     return (
-        <div className="w-full flex items-center justify-between border-t border-t-line p-[26px]">
+        <footer className="w-full flex items-center justify-between border-t border-t-line p-[26px]">
             <div className="flex items-center gap-[24px]">
                 <Button value="Electrical Boxes" icon={<ElectricIcon />} />
                 <Button value="Property Map" icon={<MapFoldIcon />} />
@@ -69,7 +68,7 @@ const Footer = () => {
             </div>
             {handleProjectDetailsFooter()}
             {handlePhotoFooter()}
-        </div>
+        </footer>
     );
 };
 
