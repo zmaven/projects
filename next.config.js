@@ -1,6 +1,6 @@
 module.exports = {
     images: {
-        domains: ['localhost:3000', 'cdn.pixabay.com', 'i.ibb.co']
+        domains: ['localhost:3000', 'cdn.pixabay.com', 'i.ibb.co', 'sitewise-api.vercel.app']
     },
     webpack(config) {
         config.module.rules.push({
