@@ -1,0 +1,42 @@
+{
+    "plugins": ["react-hooks"],
+    "extends": [
+        "next",
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "prettier"
+    ],
+    "rules": {
+        "max-len": ["error", { "code": 120 }],
+        "no-console": "warn",
+        "arrow-parens": "error",
+        "semi": [2, "always"],
+        "no-duplicate-imports": "error",
+        "react/react-in-jsx-scope": "off",
+        "@next/next/no-img-element": "error",
+        "react-hooks/exhaustive-deps": "off",
+        "no-undef": "off",
+        "react/display-name": "off",
+        "no-unused-vars": [
+            "warn",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_",
+                "caughtErrorsIgnorePattern": "^_"
+            }
+        ]
+    },
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "ignorePatterns": [
+        "node_modules",
+        "build",
+        "dist",
+        "public",
+        ".next",
+        "__test__"
+    ]
+}
