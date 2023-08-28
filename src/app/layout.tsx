@@ -1,8 +1,8 @@
 import './globals.css';
 
+import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { montserrat } from './fonts';
-import { ReactNode } from 'react';
 import { ReduxProvider } from '@/redux/provider';
 
 export const metadata: Metadata = {
@@ -44,16 +44,14 @@ export const metadata: Metadata = {
     ]
 };
 
-const RootLayout = (props: { dashboard: ReactNode }) => {
+const RootLayout = ({ children }: { children: ReactNode }) => {
     return (
         <html lang="en">
-            <ReduxProvider>
-                <body
-                    className={`${montserrat.className} w-full h-screen flex items-start overflow-hidden`}
-                >
-                    {props.dashboard}
-                </body>
-            </ReduxProvider>
+            <body
+                className={`${montserrat.className} w-full h-screen flex items-start overflow-hidden`}
+            >
+                <ReduxProvider>{children}</ReduxProvider>
+            </body>
         </html>
     );
 };

@@ -21,13 +21,12 @@ import { appointmentFormatDate, formatDate } from '@/utils/helpers';
 import { useProjects } from '@/swrApi/projects';
 import { FallbackError, FallbackSpinner } from '@/components/shared/fallbacks';
 import { useParams } from 'next/navigation';
-import { PROJECT_DETAILS_SLUG } from '@/utils/constants';
 
 const ProjectDetailsPage = () => {
-    const { dashboard = [] } = useParams();
-    const projectId = dashboard[PROJECT_DETAILS_SLUG];
-    const { projects = [], isLoading, error } = useProjects(`id=${projectId}`);
-    const projectDetails = projects[0];
+    const { slug } = useParams();
+    const projectId = slug && slug[0];
+    const { projects, isLoading, error } = useProjects(`id=${projectId}`);
+    const projectDetails = projects && projects[0];
 
     if (error) return <FallbackError content="Something went wrong!" />;
     if (isLoading) return <FallbackSpinner />;
