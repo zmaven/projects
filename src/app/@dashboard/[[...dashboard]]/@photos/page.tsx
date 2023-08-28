@@ -9,9 +9,9 @@ import { PhotosSelectionBox } from '@/components/features/projects/photos';
 import { FallbackEmpty, FallbackError } from '@/components/shared/fallbacks';
 import { usePhotos } from '@/swrApi/photos';
 
-const Page = () => {
+const PhotosPage = () => {
     const photosRef = useRef<HTMLDivElement | null>(null);
-    const { photos, error, isLoading } = usePhotos();
+    const { photos = [], error, isLoading } = usePhotos();
 
     const handleActive = (isActive: boolean | undefined) => {
         if (isActive) {
@@ -64,4 +64,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default PhotosPage;

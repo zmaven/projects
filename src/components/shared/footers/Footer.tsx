@@ -8,16 +8,11 @@ import {
     ElectricIcon
 } from '@/public/icons';
 import { Button } from '@/components/shared/buttons';
-import { useParams, usePathname, useRouter } from 'next/navigation';
-import { PROJECT_ID_SLUG } from '@/utils/constants';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Footer = () => {
-    const { slug } = useParams();
-    const projectId = slug && slug[PROJECT_ID_SLUG];
     const path = usePathname();
     const router = useRouter();
-
-    const isProjectPage = !projectId;
 
     const handleProjectDetailsFooter = () => {
         if (!path.includes('photos')) {

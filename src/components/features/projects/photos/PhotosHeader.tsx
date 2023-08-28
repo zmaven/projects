@@ -10,11 +10,20 @@ import {
     useSearchParams
 } from 'next/navigation';
 import { ChevronIcon, FilterIcon } from '@/public/icons';
+import {
+    PHOTO_DETAILS_SLUG,
+    PHOTO_SLUG,
+    PROJECT_DETAILS_SLUG
+} from '@/utils/constants';
 
 const PhotosHeader = () => {
     const path = usePathname();
     const router = useRouter();
-    const { projectId, photoId } = useParams();
+
+    const { dashboard = [] } = useParams();
+    const projectId = dashboard[PROJECT_DETAILS_SLUG];
+    const isPhotoPage = dashboard[PHOTO_SLUG] && !dashboard[PHOTO_DETAILS_SLUG];
+
     const searchParams = useSearchParams();
     const [tabs, setTabs] = useState<TabProps[]>([
         {
@@ -62,7 +71,7 @@ const PhotosHeader = () => {
                 />
                 <h1 className="font-bold text-[32px]">Photos</h1>
             </section>
-            {!photoId && (
+            {!isPhotoPage && (
                 <section className="w-full flex items-center justify-between">
                     <div className="flex items-center gap-2 rounded-[8px]">
                         <Tab tabs={tabs} onSelectTab={onSelectTab} />

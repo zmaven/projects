@@ -9,18 +9,18 @@ import {
 } from '@/public/icons';
 import Link from 'next/link';
 import Image from 'next/image';
-import { avatarImg } from '@/public/images';
-import { Bar } from '@/components/shared/progress';
-import { appointmentFormatDate } from '@/utils/helpers';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useProjects } from '@/swrApi/projects';
 import {
     FallbackEmpty,
     FallbackError,
     FallbackSpinner
 } from '@/components/shared/fallbacks';
+import { avatarImg } from '@/public/images';
+import { useProjects } from '@/swrApi/projects';
+import { Bar } from '@/components/shared/progress';
+import { appointmentFormatDate } from '@/utils/helpers';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-const ProjectList = () => {
+const ProjectsPage = () => {
     const router = useRouter();
     const path = usePathname();
     const order = useSearchParams().get('order');
@@ -188,4 +188,4 @@ const ProjectList = () => {
     );
 };
 
-export default ProjectList;
+export default ProjectsPage;

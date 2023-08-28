@@ -2,16 +2,14 @@
 
 import { useParams } from 'next/navigation';
 import { useProjects } from '@/swrApi/projects';
-import { PROJECT_ID_SLUG } from '@/utils/constants';
-import { FallbackError } from '../fallbacks';
+import { PROJECT_DETAILS_SLUG } from '@/utils/constants';
 
 const HeaderInfo = () => {
-    const { slug } = useParams();
-    const projectId = slug && slug[PROJECT_ID_SLUG];
-    const { projects, error } = useProjects(`id=${projectId}`);
+    const { dashboard = [] } = useParams();
+    const projectId = dashboard[PROJECT_DETAILS_SLUG];
+    const { projects } = useProjects(`id=${projectId}`);
     const projectDetails = projects && projects[0];
 
-    if (error) return <FallbackError content="Something went wrong!" />;
     return (
         <>
             {projectId && (

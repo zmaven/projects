@@ -1,12 +1,9 @@
 import './globals.css';
-import { ReactNode, Suspense } from 'react';
+
 import type { Metadata } from 'next';
 import { montserrat } from './fonts';
+import { ReactNode } from 'react';
 import { ReduxProvider } from '@/redux/provider';
-import { Nav } from '@/components/shared';
-import { Header } from '@/components/shared/headers';
-import { Footer } from '@/components/shared/footers';
-import { FallbackSpinner } from '@/components/shared/fallbacks';
 
 export const metadata: Metadata = {
     title: 'Sitewise',
@@ -47,29 +44,14 @@ export const metadata: Metadata = {
     ]
 };
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
+const RootLayout = (props: { dashboard: ReactNode }) => {
     return (
         <html lang="en">
             <ReduxProvider>
                 <body
-                    className={`${montserrat.className} w-full h-screen flex items-start`}
+                    className={`${montserrat.className} w-full h-screen flex items-start overflow-hidden`}
                 >
-                    <Suspense fallback={<FallbackSpinner />}>
-                        <Nav />
-                    </Suspense>
-                    <div className="w-full h-full flex flex-col justify-between">
-                        <Suspense fallback={<FallbackSpinner />}>
-                            <Header />
-                        </Suspense>
-                        <Suspense fallback={<FallbackSpinner />}>
-                            <main className="w-full flex-1 overflow-y-auto">
-                                {children}
-                            </main>
-                        </Suspense>
-                        <Suspense fallback={<FallbackSpinner />}>
-                            <Footer />
-                        </Suspense>
-                    </div>
+                    {props.dashboard}
                 </body>
             </ReduxProvider>
         </html>
