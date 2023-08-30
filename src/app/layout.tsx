@@ -1,7 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { montserrat } from './fonts';
-import { Nav } from '@/components/shared';
 
 export const metadata: Metadata = {
     title: 'Sitewise',
@@ -43,24 +42,17 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-    children
+    auth,
+    dashboard
 }: {
-    children: React.ReactNode;
+    auth: React.ReactNode;
+    dashboard: React.ReactNode;
 }) {
     const isAuth = false;
     return (
         <html lang="en">
             <body className={montserrat.className}>
-                {isAuth ? (
-                    children
-                ) : (
-                    <div className="w-full h-screen flex items-start">
-                        <Nav />
-                        <header>Header</header>
-                        <main>{children}</main>
-                        <footer>Footer</footer>
-                    </div>
-                )}
+                {isAuth ? auth : dashboard}
             </body>
         </html>
     );
