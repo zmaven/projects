@@ -110,12 +110,12 @@ export const generateProjects = () => {
         status: faker.helpers.arrayElement(['in-person', 'virtual']),
         address: `${faker.location.state()} ${faker.location.streetAddress()} ${faker.location.zipCode()}`,
         inspectionDate: new Date().getTime(),
-        // suites: Array.from({ length: 20 }, () => generateSuites()),
-        // buildings: {
-        //     id: faker.string.uuid().slice(0, 12),
-        //     title: 'Building',
-        //     types: Array.from({ length: 5 }, () => generateTakeOffTypes())
-        // }
+        suites: Array.from({ length: 20 }, () => generateSuites()),
+        buildings: {
+            id: faker.string.uuid().slice(0, 12),
+            title: 'Building',
+            types: Array.from({ length: 5 }, () => generateTakeOffTypes())
+        }
     };
 
     return project;

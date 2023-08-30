@@ -147,7 +147,7 @@ declare global {
         address: string;
         inspectionDate: number;
         status: 'in-person' | 'virtual';
-        suites?: Suite[];
-        buildings?: Building;
+        suites: Suite[];
+        buildings: Building;
     };
 }

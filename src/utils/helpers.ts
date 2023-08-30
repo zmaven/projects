@@ -1,4 +1,3 @@
-import { ReadonlyURLSearchParams } from 'next/navigation';
 import { MouseEvent } from 'react';
 
 export const calculatePopupPosition = (evt: MouseEvent) => {
@@ -19,6 +18,45 @@ export const calculatePopupPosition = (evt: MouseEvent) => {
     }
     y += 10;
     return { x, y, chevron };
+};
+
+export const centralizedFetch = async (
+    endpoint: string,
+    method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
+    options?: Object,
+    body?: any,
+    headers?: HeadersInit
+) => {
+    try {
+        const url = `${process.env.NEXT_PUBLIC_BASE_URL}${endpoint}`;
+        const requestOptions = {
+            method,
+            headers: {
+                'Content-Type': 'application/json',
+                ...headers
+            },
+            body,
+            ...options
+        };
+
+        const response = await fetch(url, requestOptions);
+
+        if (!response.ok) {
+            return {
+                success: false,
+                status: response.status,
+                error: response.statusText
+            };
+        }
+
+        return await response.json();
+    } catch (error: any) {
+        // Handle other errors
+        return {
+            success: false,
+            error: error.message || 'Unknown error occurred'
+        };
+    }
 };
 
 export const appointmentFormatDate = (date: Date) => {
@@ -78,8 +116,4 @@ export const onFilter = ({
     const search = current.toString();
     const query = search ? `?${search}` : '';
     return query;
-};
-
-export const isProjectPage = (path: string, searchParams: ReadonlyURLSearchParams) => {
-    return path.includes('projects') && searchParams.get('id');
 };

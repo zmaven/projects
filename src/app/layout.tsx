@@ -1,9 +1,7 @@
 import './globals.css';
-
-import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { montserrat } from './fonts';
-import { ReduxProvider } from '@/redux/provider';
+import { Nav } from '@/components/shared';
 
 export const metadata: Metadata = {
     title: 'Sitewise',
@@ -44,16 +42,26 @@ export const metadata: Metadata = {
     ]
 };
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
+export default function RootLayout({
+    children
+}: {
+    children: React.ReactNode;
+}) {
+    const isAuth = false;
     return (
         <html lang="en">
-            <body
-                className={`${montserrat.className} w-full h-screen flex items-start overflow-hidden`}
-            >
-                <ReduxProvider>{children}</ReduxProvider>
+            <body className={montserrat.className}>
+                {isAuth ? (
+                    children
+                ) : (
+                    <div className="w-full h-screen flex items-start">
+                        <Nav />
+                        <header>Header</header>
+                        <main>{children}</main>
+                        <footer>Footer</footer>
+                    </div>
+                )}
             </body>
         </html>
     );
-};
-
-export default RootLayout;
+}

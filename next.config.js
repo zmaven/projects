@@ -1,7 +1,5 @@
-module.exports = {
-    images: {
-        domains: ['localhost:3000', 'cdn.pixabay.com', 'i.ibb.co', 'sitewise-api.vercel.app']
-    },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
     webpack(config) {
         config.module.rules.push({
             test: /\.svg$/i,
@@ -16,5 +14,7 @@ module.exports = {
         });
         return config;
     },
-    output: 'export'
-};
+    reactStrictMode: true
+}
+
+module.exports = nextConfig
